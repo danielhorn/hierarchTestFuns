@@ -1,4 +1,4 @@
-makeCustomHierarchWFG = function(z.max, A, trafos, k, c, s) {
+makeCustomHierarchWFG = function(z.max, trafos, k, c, s) {
 
 
   customHierarchWFG = function(z) {

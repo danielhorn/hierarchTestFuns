@@ -1,3 +1,6 @@
+
+#'@export
+
 makeHWfGf1 = function(in.dim, k, c, s) {
   n = in.dim
   z.max = 2 * 1:n
@@ -18,5 +21,5 @@ makeHWfGf1 = function(in.dim, k, c, s) {
     list(name = "r_sum", ids = (k + 1):n, params = list(w = 2 * (k + 1):n))))
 
   trafos = list(trafo1, trafo2, trafo3, trafo4)
-  makeCustomHierarchWFG(z.max, A, trafos, k, c, s)
+  makeCustomHierarchWFG(z.max, trafos, k, c, s)
 }
