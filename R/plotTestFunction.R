@@ -1,4 +1,4 @@
-
+#' @export
 
 plotTestFunction = function(f, solution = 128) {
   x = seq(0, 1, length.out = solution)
