@@ -2,7 +2,7 @@
 #'@export
 
 
-makeHWfGf9 = function(in.dim, k, s, c) {
+makeHWFGF9 = function(in.dim, k, s, c) {
   n = in.dim
   z.max = 2 * 1:n
 
