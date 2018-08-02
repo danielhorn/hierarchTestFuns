@@ -9,8 +9,6 @@ makeHZHF9 = function(in.dim, k, s, c) {
   assertNumeric(c, lower = 0, upper = 2)
   assertNumeric(s)
 
-  n = in.dim
-
   z.max = 2 * 1:in.dim
 
   trafo1 = makeWFGTrafo(c(
