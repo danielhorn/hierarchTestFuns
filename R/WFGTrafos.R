@@ -172,16 +172,3 @@ wfgTrafoRNonsep = function(A) {
 }
 
 
-#' @rdname WFGTrafos
-wfgTrafoHierarch = function(A) {
-  A = asCount(A)
-
-  trafo.function = function(y) {
-
-  }
-
-  trafo.function = addClasses(trafo.function, "wfgTrafoFunction")
-  return(trafo.function)
-}
-
-

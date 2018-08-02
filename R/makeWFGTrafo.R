@@ -61,6 +61,15 @@ makeWFGTrafo = function(arg) {
     do.call(funs[[i]], as.list(params[[i]])))
 
   trafoFun = function(x) {
+
+    #for (trafo in trafoFuns) {
+    #  # Numeric of floating point can be a bitch. Round a bit.
+    #  x = round(x, digits = 14)
+    #  x = trafo(x)
+    #}
+
+    #x
+
     drop(unlist(sapply(seq_along(trafoFuns), function (i) {
       y.prime = x[y.prime.ids[[i]]]
       if (length(y.prime) == 0L)
