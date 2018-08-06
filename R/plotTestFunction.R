@@ -1,7 +1,23 @@
+#' @title Plot function for hzhf function
+#'
+#' @param x [\code{function}] \cr
+#'   Size of parameter space.
+#' @param resolution [\code{integer(1)}] \cr
+#'   Number non-hierarchical parameters. Must be small than in.dim - 1.
+#' @param ids [\code{double(1)}] \cr
+#'   Metaparameter of all test functions, size of hierarchical area, see details. Default is 0.5.
+#' @param def.vec [\code{double(1)}] \cr
+#'   Metaparameter of all test functions, shift of hierarchical area, see details.. Default is 0.
+#' @param ... [any] \cr
+#'   Not used.
+#' @return A \code{smoof_function}.
+#'
 #' @export
 
-plotTestFunction = function(f, resolution = 128, ids = NULL,
-  def.vec = 0.35 * getZMax(f)) {
+plot.hzhf_function = function(x, resolution = 128, ids = NULL,
+  def.vec = 0.35 * getZMax(f), ...) {
+
+  f = x
 
   in.dim = getNumberOfParameters(f)
   k = getK(f)
@@ -28,11 +44,9 @@ plotTestFunction = function(f, resolution = 128, ids = NULL,
   xs = as.data.frame(cbind(xs, y))
   names(xs) = c("x1", "x2", "value")
 
-  ggplot(xs, aes(x = x1, y = x2, z = value, fill = value)) +
+  ggplot(xs, aes_string(x = "x1", y = "x2", z = "value", fill = "value")) +
     geom_raster() + geom_contour(colour = "black", bins = 15) +
     scale_fill_gradientn(colours=c("#000070","#EEFFFF")) +
-    scale_x_continuous(breaks = scales::pretty_breaks(n = 6)) +
-    scale_y_continuous(breaks = scales::pretty_breaks(n = 6)) +
     xlab(paste("x", ids[1], sep = "")) + ylab(paste("x", ids[2], sep = ""))
 
 

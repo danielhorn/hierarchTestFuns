@@ -1,13 +1,11 @@
-
+#'@rdname hzhf
 #'@export
 
 
-makeHZHF11 = function(in.dim, k, s, c) {
+makeHZHF11 = function(in.dim, k, c = 0.5, s = 0, check = TRUE) {
 
   in.dim = asCount(in.dim)
   k = asInteger(k, lower = 1L, upper = in.dim - 1L)
-  assertNumeric(c, lower = 0, upper = 2)
-  assertNumeric(s)
 
   z.max = 2 * 1:in.dim
 
@@ -32,5 +30,5 @@ makeHZHF11 = function(in.dim, k, s, c) {
 
   trafos = list(trafo1, trafo2, trafo3)
   makeCustomHierarchWFG(name = "HZHF11", in.dim = in.dim, k = k, z.max = z.max,
-    trafos = trafos, c = c, s = s)
+    trafos = trafos, c = c, s = s, check = check)
 }

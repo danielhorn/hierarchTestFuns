@@ -12,7 +12,7 @@ makeCustomHierarchWFG = function(name, in.dim, k, z.max, trafos, c, s, check = T
 
       nas = is.na(b)
       if (sum(nas) %nin% c(0, in.dim - k)) {
-        stop("Eiter all or none of the hierarchical Params must be NA")
+        stop("Either all or none of the hierarchical Params must be NA")
       }
       if (sum(nas) == in.dim - k) {
         b = NA
@@ -45,17 +45,17 @@ makeCustomHierarchWFG = function(name, in.dim, k, z.max, trafos, c, s, check = T
     )
   )
 
-  addClasses(customHierarchWFG, "hierarchTestFun")
+  customHierarchWFG = addClasses(customHierarchWFG, "hzhf_function")
 
   return(customHierarchWFG)
 }
 
 getK = function(fun) {
-  environment(environment(f)$fn)$k
+  environment(environment(fun)$fn)$k
 }
 
 getZMax = function(fun) {
-  environment(environment(f)$fn)$z.max
+  environment(environment(fun)$fn)$z.max
 }
 
 

@@ -1,12 +1,12 @@
-
+#'@rdname hzhf
 #'@export
 
-makeHZHF01 = function(in.dim, k, c, s) {
+makeHZHF01 = function(in.dim, k, c = 0.5, s = 0, check = TRUE) {
 
   in.dim = checkmate::asCount(in.dim)
   k = checkmate::asInteger(k, lower = 1L, upper = in.dim)
-  assertNumeric(c, lower = 0, upper = 2)
-  assertNumeric(s)
+  #assertNumeric(c, lower = 0, upper = 2)
+  #assertNumeric(s)
 
   z.max = 2 * 1:in.dim
 
@@ -26,5 +26,5 @@ makeHZHF01 = function(in.dim, k, c, s) {
   trafos = list(trafo1, trafo2, trafo3)
 
   makeCustomHierarchWFG(name = "HZHF01", in.dim = in.dim, k = k, z.max = z.max,
-    trafos = trafos, c = c, s = s)
+    trafos = trafos, c = c, s = s, check = check)
 }

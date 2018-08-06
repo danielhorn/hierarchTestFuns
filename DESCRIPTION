@@ -1,18 +1,18 @@
-Package: hierarchTestFuns
-Title: What the Package Does (one line, title case)
+Package: hzhf
+Title: Test functions for numerical optimization with hierarchical parameters
 Version: 0.0.0.9000
 Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
 Description: What the package does (one paragraph).
-Depends: R (>= 3.4.2)
-License: What license is it under?
+Depends: R (>= 3.5)
+License: BSD_3_clause + file LICENSE
+URL: https://github.com/danielhorn/hierarchTestFuns
+BugReports: https://github.com/danielhorn/moobench/hierarchTestFuns
 Encoding: UTF-8
 Imports:
     checkmate,
     BBmisc,
     ParamHelpers,
-    soobench,
-    ggplot2,
-    emoa,
-    gridExtra
+    smoof,
+    ggplot2
 LazyData: true
 RoxygenNote: 6.1.0

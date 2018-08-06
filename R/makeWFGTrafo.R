@@ -53,22 +53,12 @@ makeWFGTrafo = function(arg) {
     s_decept = wfgTrafoSDecept,
     s_multi = wfgTrafoSMulti,
     r_sum = wfgTrafoRSum,
-    r_nonsep = wfgTrafoRNonsep,
-    r_hierarch = wfgTrafoRHierarch))
+    r_nonsep = wfgTrafoRNonsep))
 
   trafoFuns = lapply(seq_along(arg), function(i)
     do.call(funs[[i]], as.list(params[[i]])))
 
   trafoFun = function(x) {
-
-    #for (trafo in trafoFuns) {
-    #  # Numeric of floating point can be a bitch. Round a bit.
-    #  x = round(x, digits = 14)
-    #  x = trafo(x)
-    #}
-
-    #x
-
     drop(unlist(sapply(seq_along(trafoFuns), function (i) {
       y.prime = x[y.prime.ids[[i]]]
       if (length(y.prime) == 0L)
