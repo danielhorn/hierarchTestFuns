@@ -4,8 +4,7 @@
 #'   List with \code{list(names, ids, params)}. See examples.
 #' @return A [\code{list}] of WFG trafos.
 #'
-#' @export
-#'
+
 makeWFGTrafo = function(arg) {
 
   funs = extractSubList(arg, "name")
