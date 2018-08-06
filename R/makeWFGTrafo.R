@@ -1,9 +1,9 @@
-#' Make WFG Transformations
-#'
-#' @param arg [\code{list}] \cr
-#'   List with \code{list(names, ids, params)}. See examples.
-#' @return A [\code{list}] of WFG trafos.
-#'
+# Make WFG Transformations
+#
+# @param arg [\code{list}] \cr
+#   List with \code{list(names, ids, params)}. See examples.
+# @return A [\code{list}] of WFG trafos.
+#
 
 makeWFGTrafo = function(arg) {
 

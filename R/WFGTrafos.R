@@ -1,38 +1,38 @@
-#' WFG Transformations
-#'
-#' \code{wfgTrafoIdentity} is a transformation that changes nothing. \cr
-#' \code{wfgTrafoBPoly} is the polynomial bias transformation. \cr
-#' \code{wfgTrafoBFlat} creates a region in search space in which all points have the same objective values. \cr
-#' \code{wfgTrafoBParam} is the parameter-dependent transformation. \cr
-#' \code{wfgTrafoSLinear} creates a linear shift of the true optimum. \cr
-#' \code{wfgTrafoSDecept} creates regions in the search space that have a sub-optimal value but larger area. \cr
-#' \code{wfgTrafoSMulti} creates many local optima. \cr
-#' \code{wfgTrafoRSum} creates a dependence between different search-space entries. \cr
-#' \code{wfgTrafoRNonsep} creates a dependence between objectives. \cr
-#'
-#' @param alpha [\code{numeric(1)}] \cr
-#'   wfgTrafoBPoly: alpha > 1 biases toward 0, alpha < 1 biases toward 1.
-#' @param A [\code{numeric(1)}] \cr
-#'  For parameter requirements see WFG Paper. Need at: \cr
-#'  wfgTrafoBFlat, wfgTrafoBParam, wfgtrafoSLinear, wfgTrafoSDecept, wfgTrafoSMulti, wfgTrafoRNonsep
-#' @param B [\code{numeric(1)}] \cr
-#'  For parameter requirements see WFG Paper. Need at: \cr
-#'  wfgTrafoBFlat, wfgTrafoBParam, wfgTrafoSDecept, wfgTrafoSMulti
-#' @param C [\code{numeric(1)}] \cr
-#'  For parameter requirements see WFG Paper. Need at: \cr
-#'  wfgTrafoBFlat, wfgTrafoBParam, wfgTrafoSDecept, wfgTrafoSMulti
-#' @param u [\code{function}] \cr
-#'  At wfgTrafoBParamt
-#' @param w [\code{numeric}] \cr
-#'  At wfgTrafoRSum
-#'
-#' @return A \code{wfgTrafoFunction}.
-#'
-#' @name WFGTrafos
-#'
-#' @aliases wfgTrafo WFGTrafo
+# WFG Transformations
+#
+# \code{wfgTrafoIdentity} is a transformation that changes nothing. \cr
+# \code{wfgTrafoBPoly} is the polynomial bias transformation. \cr
+# \code{wfgTrafoBFlat} creates a region in search space in which all points have the same objective values. \cr
+# \code{wfgTrafoBParam} is the parameter-dependent transformation. \cr
+# \code{wfgTrafoSLinear} creates a linear shift of the true optimum. \cr
+# \code{wfgTrafoSDecept} creates regions in the search space that have a sub-optimal value but larger area. \cr
+# \code{wfgTrafoSMulti} creates many local optima. \cr
+# \code{wfgTrafoRSum} creates a dependence between different search-space entries. \cr
+# \code{wfgTrafoRNonsep} creates a dependence between objectives. \cr
+#
+# @param alpha [\code{numeric(1)}] \cr
+#   wfgTrafoBPoly: alpha > 1 biases toward 0, alpha < 1 biases toward 1.
+# @param A [\code{numeric(1)}] \cr
+#  For parameter requirements see WFG Paper. Need at: \cr
+#  wfgTrafoBFlat, wfgTrafoBParam, wfgtrafoSLinear, wfgTrafoSDecept, wfgTrafoSMulti, wfgTrafoRNonsep
+# @param B [\code{numeric(1)}] \cr
+#  For parameter requirements see WFG Paper. Need at: \cr
+#  wfgTrafoBFlat, wfgTrafoBParam, wfgTrafoSDecept, wfgTrafoSMulti
+# @param C [\code{numeric(1)}] \cr
+#  For parameter requirements see WFG Paper. Need at: \cr
+#  wfgTrafoBFlat, wfgTrafoBParam, wfgTrafoSDecept, wfgTrafoSMulti
+# @param u [\code{function}] \cr
+#  At wfgTrafoBParamt
+# @param w [\code{numeric}] \cr
+#  At wfgTrafoRSum
+#
+# @return A \code{wfgTrafoFunction}.
+#
+# @name WFGTrafos
+#
+# @aliases wfgTrafo WFGTrafo
 
-#' @rdname WFGTrafos
+# @rdname WFGTrafos
 wfgTrafoIdentity = function(A) {
   # A as placeholder.
   trafo.function = function(y) y
@@ -40,7 +40,7 @@ wfgTrafoIdentity = function(A) {
   return(trafo.function)
 }
 
-#' @rdname WFGTrafos
+# @rdname WFGTrafos
 wfgTrafoBPoly = function(alpha) {
   assertNumber(alpha, lower = 0)
   if (alpha == 1L)
@@ -52,7 +52,7 @@ wfgTrafoBPoly = function(alpha) {
   return(trafo.function)
 }
 
-#' @rdname WFGTrafos
+# @rdname WFGTrafos
 wfgTrafoBFlat = function(A, B, C) {
   assertNumber(A, lower = 0, upper = 1)
   assertNumber(B, lower = 0, upper = 1)
@@ -74,7 +74,7 @@ wfgTrafoBFlat = function(A, B, C) {
   return(trafo.function)
 }
 
-#' @rdname WFGTrafos
+# @rdname WFGTrafos
 wfgTrafoBParam = function(u, A, B, C) {
   assertNumber(A, lower = 0, upper = 1)
   assertNumber(B, lower = A, upper = C)
@@ -90,7 +90,7 @@ wfgTrafoBParam = function(u, A, B, C) {
   return(trafo.function)
 }
 
-#' @rdname WFGTrafos
+# @rdname WFGTrafos
 wfgTrafoSLinear = function(A) {
   assertNumber(A, lower = 0, upper = 1)
 
@@ -102,7 +102,7 @@ wfgTrafoSLinear = function(A) {
   return(trafo.function)
 }
 
-#' @rdname WFGTrafos
+# @rdname WFGTrafos
 wfgTrafoSDecept = function(A, B, C) {
   assertNumber(A, lower = 0, upper = 1)
   assertNumber(B, lower = 0, upper = 1)
@@ -122,7 +122,7 @@ wfgTrafoSDecept = function(A, B, C) {
   return(trafo.function)
 }
 
-#' @rdname WFGTrafos
+# @rdname WFGTrafos
 wfgTrafoSMulti = function(A, B, C) {
   A = asCount(A)
   # Fix me
@@ -141,7 +141,7 @@ wfgTrafoSMulti = function(A, B, C) {
   return(trafo.function)
 }
 
-#' @rdname WFGTrafos
+# @rdname WFGTrafos
 wfgTrafoRSum = function(w) {
   assertNumeric(w, lower = 0)
 
@@ -153,7 +153,7 @@ wfgTrafoRSum = function(w) {
   return(trafo.function)
 }
 
-#' @rdname WFGTrafos
+# @rdname WFGTrafos
 wfgTrafoRNonsep = function(A) {
   A = asCount(A)
 
