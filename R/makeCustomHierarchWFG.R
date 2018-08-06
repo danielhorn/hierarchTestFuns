@@ -1,15 +1,26 @@
 
 
-makeCustomHierarchWFG = function(name, in.dim, k, z.max, trafos, c, s) {
+makeCustomHierarchWFG = function(name, in.dim, k, z.max, trafos, c, s, check = TRUE) {
 
   customHierarchWFG = function(z) {
     stopifnot(length(z) == in.dim)
 
-    a = z[1:k]
-    b = z[(k + 1):in.dim]
+    if (check) {
+      # Stupid ParamHelpers
+      a = z[1:k]
+      b = z[(k + 1):in.dim]
 
-    if (!isFeasible(getParamSet(customHierarchWFG), list(a = a, b = b))) {
-      stop("Input Parameter is not feasible. Correct dimension? Hierarchical structur violated?")
+      nas = is.na(b)
+      if (sum(nas) %nin% c(0, in.dim - k)) {
+        stop("Eiter all or none of the hierarchical Params must be NA")
+      }
+      if (sum(nas) == in.dim - k) {
+        b = NA
+      }
+
+      if (!isFeasible(getParamSet(customHierarchWFG), list(a = a, b = b))) {
+        stop("Input Parameter is not feasible. Correct dimension? Hierarchical structur violated?")
+      }
     }
 
     x = z / z.max

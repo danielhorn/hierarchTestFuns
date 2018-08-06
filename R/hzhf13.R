@@ -2,7 +2,7 @@
 #'@export
 
 
-makeHZHF9 = function(in.dim, k, s, c) {
+makeHZHF13 = function(in.dim, k, s, c) {
 
   in.dim = asCount(in.dim)
   k = asInteger(k, lower = 1L, upper = in.dim - 1L)
@@ -12,8 +12,8 @@ makeHZHF9 = function(in.dim, k, s, c) {
   z.max = 2 * 1:in.dim
 
   trafo1 = makeWFGTrafo(c(
-    list(list(name = "identity",ids = 1:k)),
-    lapply((k + 1):n, function(i)
+    list(list(name = "identity",ids = 1)),
+    lapply(2:in.dim, function(i)
       list(name = "b_param", ids = i, y.prime.ids = 1:(i - 1),
         params = list(u = mean, A = 0.98 / 49.98, B = 0.02, C = 50)
       ))
@@ -30,6 +30,6 @@ makeHZHF9 = function(in.dim, k, s, c) {
   ))
 
   trafos = list(trafo1, trafo2, trafo3)
-  makeCustomHierarchWFG(name = "HZHF9", in.dim = in.dim, k = k, z.max = z.max,
+  makeCustomHierarchWFG(name = "HZHF13", in.dim = in.dim, k = k, z.max = z.max,
     trafos = trafos, c = c, s = s)
 }
