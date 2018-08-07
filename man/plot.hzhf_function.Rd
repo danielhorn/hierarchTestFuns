@@ -2,23 +2,29 @@
 % Please edit documentation in R/plotTestFunction.R
 \name{plot.hzhf_function}
 \alias{plot.hzhf_function}
-\title{Plot function for hzhf function}
+\title{Plot function for \code{hzhf_function} objects
+
+Produces a heat map / contour line plot for a given \code{hzhf_function}.}
 \usage{
 \method{plot}{hzhf_function}(x, resolution = 128, ids = NULL,
   def.vec = 0.35 * getZMax(f), ...)
 }
 \arguments{
-\item{x}{[\code{function}] \cr
-Size of parameter space.}
+\item{x}{[\\code{hzhf_function}] \cr
+Function to be plotted}
 
 \item{resolution}{[\code{integer(1)}] \cr
-Number non-hierarchical parameters. Must be small than in.dim - 1.}
+Size of the grid of function evaluations. In total, resolution * resolution
+points are evaluated. Default is 128.}
 
-\item{ids}{[\code{double(1)}] \cr
-Metaparameter of all test functions, size of hierarchical area, see details. Default is 0.5.}
+\item{ids}{[\code{integer(2)}] \cr
+For functions with dimension \eqn{> 2}, only 2 parameters are varied and
+plotted. ids defines which, the default the eqn{1}. and the \eqn{(k + 1)}. parameter}
 
-\item{def.vec}{[\code{double(1)}] \cr
-Metaparameter of all test functions, shift of hierarchical area, see details.. Default is 0.}
+\item{def.vec}{[\code{double(in.dim)}] \cr
+Defines values for the parameters not varied. (For simplicity, value for all parameters
+must be specified, however, the values \code{def.vec[ids]} will be ignored).
+Defaults to the optimum of the function, i.e. \code{0.7 * 1:in.dim}}
 
 \item{...}{[any] \cr
 Not used.}
@@ -27,5 +33,7 @@ Not used.}
 A \code{smoof_function}.
 }
 \description{
-Plot function for hzhf function
+Plot function for \code{hzhf_function} objects
+
+Produces a heat map / contour line plot for a given \code{hzhf_function}.
 }
