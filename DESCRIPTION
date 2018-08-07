@@ -11,8 +11,9 @@ Encoding: UTF-8
 Imports:
     checkmate,
     BBmisc,
+    ggplot2,
     ParamHelpers,
     smoof,
-    ggplot2
+    testthat
 LazyData: true
 RoxygenNote: 6.1.0
