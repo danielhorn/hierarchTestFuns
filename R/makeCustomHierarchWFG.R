@@ -18,7 +18,7 @@ makeCustomHierarchWFG = function(name, in.dim, k, z.max, trafos, c, s, check = T
         b = NA
       }
 
-      if (!isFeasible(getParamSet(customHierarchWFG), list(a = a, b = b))) {
+      if (!isFeasible(getParamSet(customHierarchWFG), as.list(z))) {
         stop("Input Parameter is not feasible. Correct dimension? Hierarchical structur violated?")
       }
     }
@@ -33,16 +33,19 @@ makeCustomHierarchWFG = function(name, in.dim, k, z.max, trafos, c, s, check = T
     x[1] + if (z[1] > c) x[2] else s
   }
 
+
+
   customHierarchWFG = makeSingleObjectiveFunction(
     name = name, id = name,
     description = "Testfunction for hierarchical parameter spaces",
     fn = customHierarchWFG,
-    par.set = makeParamSet(
-      makeNumericVectorParam("a", len = k, lower = 0, upper = z.max[1:k]),
-      makeNumericVectorParam("b", len = in.dim - k, lower = 0,
-        upper = z.max[(k + 1):in.dim],
-        requires = substitute(a[1] > c, list(c = c)))
-    )
+    par.set = do.call(makeParamSet, c(
+      lapply(1:k, function(i)
+        makeNumericParam(paste("a", i, sep = ""), lower = 0, upper = z.max[i])),
+      lapply((k + 1):in.dim, function(i)
+        makeNumericParam(paste("b", i - k, sep = ""), lower = 0, upper = z.max[i],
+          requires = substitute("a1" > c, list(c = c))))
+    ))
   )
 
   customHierarchWFG = addClasses(customHierarchWFG, "hzhf_function")

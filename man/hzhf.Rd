@@ -2,7 +2,7 @@
 % Please edit documentation in R/hzhf.R, R/hzhf01.R, R/hzhf02.R, R/hzhf03.R,
 %   R/hzhf04.R, R/hzhf05.R, R/hzhf06.R, R/hzhf07.R, R/hzhf08.R, R/hzhf09.R,
 %   R/hzhf10.R, R/hzhf11.R, R/hzhf12.R, R/hzhf13.R, R/hzhf14.R, R/hzhf15.R,
-%   R/hzhf_doku.R
+%   R/hzhf_doc.R
 \name{makeHZHF}
 \alias{makeHZHF}
 \alias{makeHZHF01}
@@ -64,7 +64,8 @@ ID of hzhf function to generate, element of {1, 2, ..., 15}.}
 Size of parameter space.}
 
 \item{k}{[\code{integer(1)}] \cr
-Number non-hierarchical parameters. Must be small than in.dim - 1.}
+Number of non-hierarchical parameters. Must be smaller than in.dim - 1,
+must be divisible by 2 for HFHF6, HZHF7, HZHF8.}
 
 \item{c}{[\code{double(1)}] \cr
 Metaparameter of all test functions, size of hierarchical area, see details. Default is 0.5.}
