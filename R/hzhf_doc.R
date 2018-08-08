@@ -3,6 +3,21 @@
 #' @description
 #' Hierarchical test functions by Horn and Zaefferer
 #'
+#' @param id [\code{integer(1)}] \cr
+#'   ID of hzhf function to generate, element of {1, 2, ..., 15}.
+#' @param in.dim [\code{integer(1)}] \cr
+#'   Size of parameter space.
+#' @param k [\code{integer(1)}] \cr
+#'   Number of non-hierarchical parameters. Must be smaller than in.dim - 1,
+#'   must be divisible by 2 for HFHF6, HZHF7, HZHF8.
+#' @param c [\code{double(1)}] \cr
+#'   Metaparameter of all test functions, size of hierarchical area, see details. Default is 0.5.
+#' @param s [\code{double(1)}] \cr
+#'   Metaparameter of all test functions, shift of hierarchical area, see details.. Default is 0.
+#' @param check [\code{logical(1)}] \cr
+#'   Shall parameter checks be performed befor each function evaluation? Default is TRUE
+#' @return A \code{hzhf_function}, subclass of \code{smoof_function}.
+#'
 #' @details
 #'
 #' Hierarchical test functions have several parameters that only influence the
@@ -47,20 +62,6 @@
 #' in the active regions with function values between \eqn{0} and \eqn{b},
 #' especially at the discontinuity \eqn{z[1] = c}. Unfortunately, we can not
 #' control those values.
-#'
-#' @param id [\code{integer(1)}] \cr
-#'   ID of hzhf function to generate, element of {1, 2, ..., 15}.
-#' @param in.dim [\code{integer(1)}] \cr
-#'   Size of parameter space.
-#' @param k [\code{integer(1)}] \cr
-#'   Number non-hierarchical parameters. Must be small than in.dim - 1.
-#' @param c [\code{double(1)}] \cr
-#'   Metaparameter of all test functions, size of hierarchical area, see details. Default is 0.5.
-#' @param s [\code{double(1)}] \cr
-#'   Metaparameter of all test functions, shift of hierarchical area, see details.. Default is 0.
-#' @param check [\code{logical(1)}] \cr
-#'   Shall parameter checks be performed befor each function evaluation? Default is TRUE
-#' @return A \code{hzhf_function}, subclass of \code{smoof_function}.
 #'
 #' @references
 #' Huband, Simon ; Hingston, Phil ; Barone, Luigi ; While, Lyndon:
