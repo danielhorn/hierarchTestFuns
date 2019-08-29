@@ -15,13 +15,13 @@ makeHZHF08 = function(in.dim, k, c = 0.5, s = 0, check = TRUE) {
     list(list(name = "identity",ids = 1)),
     lapply(1 + seq_len(k - 1), function(i)
       list(name = "b_param", ids = i, y.prime.ids = 1:(i - 1),
-        params = list(u = mean, A = 0.98 / 49.98, B = 0.02, C = 50)
+        params = list(u = mean, A = 0.98 / 9.98, B = 0.02, C = 10)
       )),
     list(list(name = "identity",ids = (k + 1):in.dim)
     )))
 
   trafo2 = makeWFGTrafo(list(
-    list(name = "s_decept", ids = 1:in.dim, params = list(A = 0.35, B = 0.001, C = 0.05))
+    list(name = "s_decept", ids = 1:in.dim, params = list(A = 0.35, B = 0.1, C = 0.05))
   ))
 
   rIds1 = split(1:k, rep(1:(k / 2), each = 2L))

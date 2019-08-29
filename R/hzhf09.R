@@ -13,7 +13,7 @@ makeHZHF09 = function(in.dim, k, c = 0.5, s = 0, check = TRUE) {
     list(list(name = "identity",ids = 1)),
     lapply(2:in.dim, function(i)
       list(name = "b_param", ids = i, y.prime.ids = 1:(i - 1),
-        params = list(u = mean, A = 0.98 / 49.98, B = 0.02, C = 50)
+        params = list(u = mean, A = 0.98 / 9.98, B = 0.02, C = 10)
       ))
   ))
 

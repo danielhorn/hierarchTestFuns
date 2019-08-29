@@ -77,7 +77,7 @@ wfgTrafoBFlat = function(A, B, C) {
 # @rdname WFGTrafos
 wfgTrafoBParam = function(u, A, B, C) {
   assertNumber(A, lower = 0, upper = 1)
-  assertNumber(B, lower = A, upper = C)
+  assertNumber(B, lower = 0, upper = C)
   assertNumber(C, lower = B)
 
   trafo.function = function(y, y.prime) {
@@ -129,7 +129,7 @@ wfgTrafoSMulti = function(A, B, C) {
   assertNumber(B, lower = 0)
   assertNumber(C, lower = 0, upper = 1)
   if (((4*A + 2) * pi) < (4 * B))
-    stop("Parameters not satiesfied.")
+    stop("Trafo SMulti: Parameters not satiesfied.")
 
   trafo.function = function(y) {
     tmp1 = abs(y - C) / (2 * (floor(C - y) + C))

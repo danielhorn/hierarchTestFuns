@@ -15,7 +15,7 @@ makeHZHF06 = function(in.dim, k, c = 0.5, s = 0, check = TRUE) {
     list(list(name = "identity",ids = 1)),
     lapply(1 + seq_len(k - 1), function(i)
       list(name = "b_param", ids = i, y.prime.ids = 1:(i - 1),
-        params = list(u = mean, A = 0.98 / 49.98, B = 0.02, C = 50)
+        params = list(u = mean, A = 0.98 / 9.98, B = 0.02, C = 10)
       )),
     list(list(name = "identity",ids = (k + 1):in.dim)
     )))
@@ -51,6 +51,7 @@ makeHZHF06 = function(in.dim, k, c = 0.5, s = 0, check = TRUE) {
 
 
   trafos = list(trafo1, trafo2, trafo3, trafo4, trafo5, trafo6)
+  #trafos = list(trafo1, trafo2, trafo5, trafo6)
   makeCustomHierarchWFG(name = "HZHF06", in.dim = in.dim, k = k, z.max = z.max,
     trafos = trafos, c = c, s = s, check = check)
 }

@@ -18,7 +18,7 @@ makeHZHF03 = function(in.dim, k, c = 0.5, s = 0, check = TRUE) {
   ))
 
   trafo3 = makeWFGTrafo(list(
-    list(name = "b_poly", ids = 1:in.dim, params = list(alpha = 0.02))
+    list(name = "b_poly", ids = 1:in.dim, params = list(alpha = 0.0625))
   ))
 
 

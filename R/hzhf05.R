@@ -10,7 +10,7 @@ makeHZHF05 = function(in.dim, k, c = 0.5, s = 0, check = TRUE) {
   z.max = 2 * 1:in.dim
 
   trafo1 = makeWFGTrafo(list(
-    list(name = "s_decept", ids = 1:in.dim, params = list(A = 0.35, B = 0.001, C = 0.05))
+    list(name = "s_decept", ids = 1:in.dim, params = list(A = 0.35, B = 0.1, C = 0.05))
   ))
 
 
